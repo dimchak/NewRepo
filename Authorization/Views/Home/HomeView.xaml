@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Authorization.Views.Home.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Authorization"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="Details_StackPanel">
+                    <Label Content="{Binding Path=Date}"/>
+                    <Label Content="{Binding Path=MaxTemperature}"/>
+                    <Label Content="{Binding Path=MinTemperature}"/>
+                </StackPanel>
+            </Grid>
+            <ListBox Grid.Row="1" x:Name="WeatherDays_ListBox">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button Click="WeatherDayButton_Click">
+                            <StackPanel Orientation="Vertical">
+                                <Label Content="{Binding Path=Date}"/>
+                                <Label Content="{Binding Path=MaxTemperature}"/>
+                                <Label Content="{Binding Path=MinTemperature}"/>
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+</UserControl>
